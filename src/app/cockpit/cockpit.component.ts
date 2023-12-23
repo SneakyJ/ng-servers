@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class CockpitComponent {
   
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{blueprintName: string, blueprintContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{blueprintName: string, blueprintContent: string}>();
   newName = '';
   newContent = '';
 
