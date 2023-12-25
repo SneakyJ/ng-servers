@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -6,10 +6,19 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   styleUrl: './server-element.component.css',
   encapsulation: ViewEncapsulation.Emulated
 })
-export class ServerElementComponent {
+export class ServerElementComponent implements OnInit, AfterViewInit{
   @Input('serverElement') element: {type: string, name: string, content: string };
+  @ViewChild('heading') header: ElementRef;
 
   constructor(){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    console.log('NgOnInit');
+    console.log('Header content ' + this.header.nativeElement.textContent);
+  }
+
+  ngAfterViewInit(){
+    console.log('AfterViewInit');
+    console.log('Header content ' + this.header.nativeElement.textContent);
+  }
 }
